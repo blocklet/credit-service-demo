@@ -19,6 +19,7 @@ files:
   - dist
   - logo.png
   - screenshots
+  - .env.local
 interfaces:
   - type: web
     name: publicUrl
@@ -40,7 +41,8 @@ requirements:
   os: "*"
   cpu: "*"
 scripts:
-  dev: npm run start
+  dev: pnpm run start
+  preStart: node api/hooks/pre-start.js
 environments: []
 capabilities: {}
 screenshots: []

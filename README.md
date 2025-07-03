@@ -1,121 +1,146 @@
-# Getting Started with Create Blocklet
+# Credit Service Demo - Smart Video Streaming Platform
+
+A video streaming demonstration project based on Blocklet Payment system, showcasing how to implement time-based billing for video watching services using Credit system.
+
+## 🎯 Project Overview
+
+This is a full-stack application (React.js + Express.js) with DID Wallet authentication and Credit billing system integration. Users can login with DID wallet, receive free trial time, and purchase additional watching time through the Credit system.
+
+### 🌟 Key Features
+
+- **🎬 Advanced Video Player**
+  - Full-screen playback support
+  - Progress bar scrubbing
+  - Skip forward/backward (±10s, ±30s)
+  - Volume control and mute
+  - Multiple video file support
+
+- **💳 Smart Billing System**
+  - Per-minute billing (rounded up)
+  - Real-time balance display
+  - Automatic playback time tracking
+  - Anti-cheat mechanism (auto-billing on page leave)
+
+- **🎁 New User Benefits**
+  - 3 minutes free trial for new users
+  - One-click free credit claim
+  - Eye-catching welcome interface
+
+- **🔐 User Authentication**
+  - DID Wallet integration
+  - One-click login/logout
+  - User session management
+
+- **🌍 Internationalization**
+  - Chinese/English interface switching
+  - Complete multi-language support
+
+### 🛠 Tech Stack
+
+- **Frontend**: React.js + Material-UI + Vite
+- **Backend**: Express.js + Node.js
+- **Authentication**: @arcblock/did-connect
+- **Payment**: @blocklet/payment-js ([Documentation](https://www.arcblock.io/docs/arcblock-payment-kit/capabilities-payment-js))
+- **Deployment**: Blocklet Platform
+
+### 📊 Billing Rules
+
+1. **New User Package**: First-time login gets 3 minutes free watching time
+2. **Per-minute Billing**: Any playback duration is billed per minute (rounded up)
+3. **Real-time Tracking**: Real-time display of used time and remaining time during playback
+4. **Smart Settlement**: 
+   - Immediate billing when stopping playback
+   - Auto-billing when leaving page
+   - Auto-stop when reaching time limit
+5. **Anti-cheat**: Confirmation popup and immediate billing on page refresh/close
+
+## 🎮 Usage Guide
+
+### First Time Use
+
+1. **Access App**: Open the deployed application URL in browser
+2. **Login**: Click "Login Now" button and use DID wallet to login
+3. **Claim Free Time**: New users can claim 3 minutes free watching time in the welcome interface
+4. **Start Watching**: Select a video and click play button to start watching
+
+
+### Billing Information
+
+- **Real-time Display**: Real-time display of watched time and remaining time during playback
+- **Per-minute Billing**: Playing for 1 second will be billed as 1 minute
+- **Pause No Billing**: No charges when pausing playback, can resume anytime
+- **Auto Settlement**: Automatic billing settlement when stopping playback or leaving page
+
+## 🚀 Quick Start
 
 This project was bootstrapped with [Create Blocklet](https://github.com/blocklet/create-blocklet).
 
-This is a full stack app (react.js + express.js) with DID Wallet integration. That means you can use your DID wallet to login and get a user session.
+### Prerequisites
 
-## File Structure
+1. Install [@blocklet/cli](https://www.npmjs.com/package/@blocklet/cli)
+   ```shell
+   npm install -g @blocklet/cli
+   ```
 
-- public/ - static files
-  - favicon.ico - favicon
-  - favicon.svg - favicon
-  - index.html - main html file, template for react
-- screenshots/ - Screenshots
-- api/ - Api side code
-  - hooks/ - blocklet lifecycle hooks
-  - libs/ - Api side libraries
-  - middlewares/ - Api side middlewares
-  - routes/ - Api side routes
-  - index.js - Api side entry point
-- src/ - Client side code (A standard react app structure)
-- .env - Environment variables
-- .env.local - Local environment variables
-- .eslintrc.js - ESLint configuration
-- .gitignore - Git ignore file
-- .prettierrc - Prettier configuration
-- blocklet.md - Blocklet README
-- blocklet.yml - Blocklet configuration
-- LICENSE - License file
-- logo.png - Blocklet logo file
-- package.json - Npm package file
-- README.md - A guide for this blocklet
-- version - Version file
+2. Initialize and start blocklet server
+   ```shell
+   blocklet server init
+   blocklet server start
+   ```
 
-## Development
+### Local Development
 
-1. Make sure you have [@blocklet/cli](https://www.npmjs.com/package/@blocklet/cli) installed
+1. Go to project directory: `cd credit-service-demo`
+2. Install dependencies: `npm install` or `pnpm install`
+3. Start development server: `blocklet dev`
 
-   Blocklet needs blocklet server as a dependency. So you need to install it first.
-   `npm install -g @blocklet/cli`
-   See details in [ https://www.arcblock.io/docs/blocklet-developer/install-blocklet-cli#start-blocklet-server]( https://www.arcblock.io/docs/blocklet-developer/install-blocklet-cli#start-blocklet-server)
+### Bundle & Deploy
 
-2. Init blocklet server & start blocklet server
+```shell
+# Bundle for production
+npm run bundle
 
-   Before starting an blocklet server, you need to init blocklet server.
-   `blocklet server init`
-   `blocklet server start`
-   See details in [https://www.arcblock.io/docs/blocklet-developer/install-blocklet-cli#start-blocklet-server](https://www.arcblock.io/docs/blocklet-developer/install-blocklet-cli#start-blocklet-server)
-   
-3. Go to the project directory `cd [name]`
-4. Install dependencies: `npm install` or `yarn`
-5. Start development server: `blocklet dev`
+# Deploy to local blocklet server
+blocklet deploy .blocklet/bundle
 
-## Bundle
+# Deploy to remote blocklet server
+blocklet deploy .blocklet/bundle --endpoint {server_url} --access-key {key} --access-secret {secret}
+```
 
-After developing a blocklet, you may need to bundle it. Use `npm run bundle` command.
+### Upload to Store
 
-## Deploy
+```shell
+# Bump version
+npm run bump-version
 
-- If you want to deploy this blocklet to local blocklet server, you can use `blocklet deploy .blocklet/bundle --app-id {appId}` command(Make sure the blocklet is bundled before deployment).
-  - appId is the id of the container you want to run on your server, you can see it in your server's dashboard
-- If you want to deploy this blocklet to remote blocklet server, you can use the command below.
+# Connect to store
+blocklet connect https://store.blocklet.dev/
 
-  ```shell
-  blocklet deploy .blocklet/bundle --endpoint {your blocklet server url} --access-key {blocklet server access key} --access-secret {blocklet server access secret}
-  ```
+# Upload new version
+blocklet upload
+```
 
-## Upload to blocklet store
+## 📁 File Structure
 
-- If you want to upload the blocklet to any store for other users to download and use, you can following the following instructions.
+- **public/** - Static files including demo video files (*.mp4)
+- **api/** - Backend API code
+  - **libs/** - Payment and logger utilities
+  - **routes/** - Payment and user routes
+- **src/** - Frontend React application
+  - **components/** - React components (CreditBalance, VideoPlayer, Layout)
+  - **contexts/** - Context providers (balance-context)
+  - **hooks/** - Custom hooks (useVideoPlaybackTracking)
+  - **libs/** - Client libraries (api, payment, session)
+  - **locales/** - Internationalization files (Chinese/English)
+  - **pages/** - Page components (home, profile)
 
-  Bump version at first.
+## 🔗 Documentation & Resources
 
-  ```shell
-  npm run bump-version
-  ```
+- [Blocklet Payment.js Documentation](https://www.arcblock.io/docs/arcblock-payment-kit/capabilities-payment-js)
+- [Blocklet Specification](https://github.com/blocklet/blocklet-specification/blob/main/docs/meta.md)
+- [Blocklet Developer Guide](https://www.arcblock.io/docs/blocklet-developer)
+- [Create Blocklet](https://github.com/blocklet/create-blocklet)
 
-  Connect to a store, You may need some testnet tokens to deploy your blocklet, you can get some from https://faucet.abtnetwork.io/
+## 📄 License
 
-  ```shell
-  blocklet connect https://test.store.blocklet.dev/
-  ```
-
-  Upload a new version to a store.
-
-  > Make sure the blocklet is bundled before upload.
-
-  ```shell
-  blocklet upload
-  ```
-
-  Or you can simply use `npm run upload` command.
-
-- You also can upload a new version to a store by Github CI.
-  Bump version at first.
-
-  ```shell
-  npm run bump-version
-  ```
-
-  Push your code to Github main/master branch, or make a pull request to the main/master branch.
-  The CI workflow will automatically upload a new version to a store.
-
-## Q & A
-
-1. Q: How to change a blocklet's logo?
-
-   Change the `logo.png` file root folder.
-
-   Or you can change the `logo` field in the `blocklet.yml` file.
-
-   > Make sure you have added the logo path to the `blocklet.yml` file `files` field.
-
-## Learn More
-
-- Full specification of `blocklet.yml`: [https://github.com/blocklet/blocklet-specification/blob/main/docs/meta.md](https://github.com/blocklet/blocklet-specification/blob/main/docs/meta.md)
-- Full document of Blocklet Server & blocklet development: [https://www.arcblock.io/docs/blocklet-developer](https://www.arcblock.io/docs/blocklet-developer)
-
-## License
-
-The code is licensed under the Apache 2.0 license found in the
-[LICENSE](LICENSE) file.
+The code is licensed under the Apache 2.0 license found in the [LICENSE](LICENSE) file. 

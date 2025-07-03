@@ -4,4 +4,12 @@ module.exports = {
   globals: {
     logger: true,
   },
+  rules: {
+    'react/require-default-props': [
+      'error',
+      {
+        functions: 'defaultArguments',
+      },
+    ],
+  },
 };

@@ -7,8 +7,14 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const fallback = require('@blocklet/sdk/lib/middlewares/fallback');
 
-const userRoutes = require('../routes/user');
+const userRoutesModule = require('../routes/user');
+const paymentRoutesModule = require('../routes/payment');
 
+const userRoutes = userRoutesModule.default || userRoutesModule;
+const paymentRoutes = paymentRoutesModule.default || paymentRoutesModule;
+
+console.log('userRoutes', userRoutes);
+console.log('paymentRoutes', paymentRoutes);
 const isProduction = process.env.NODE_ENV !== 'development';
 
 // Create and config express application
@@ -21,6 +27,7 @@ server.use(cors());
 const router = express.Router();
 
 userRoutes.init(router);
+paymentRoutes.init(router);
 
 if (isProduction) {
   server.use(

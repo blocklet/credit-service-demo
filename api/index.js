@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 const dotenv = require('dotenv-flow');
+
 dotenv.config();
 
 const { server: app } = require('./functions/app');

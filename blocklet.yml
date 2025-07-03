@@ -13,36 +13,40 @@ repository:
   type: git
   url: git+https://github.com/blocklet/create-blocklet.git
 specVersion: 1.2.8
-version: 0.1.0
+version: 1.0.0
 logo: logo.png
 files:
   - dist
   - logo.png
   - screenshots
+  - .env.local
 interfaces:
   - type: web
     name: publicUrl
     path: /
-    prefix: "*"
+    prefix: '*'
     port: BLOCKLET_PORT
     protocol: http
-community: ""
-documentation: ""
-homepage: ""
-license: ""
+    proxyBehavior: service
+community: ''
+documentation: ''
+homepage: ''
+license: ''
 payment:
   price: []
   share: []
 timeout:
   start: 60
 requirements:
-  server: ">=1.16.28"
-  os: "*"
-  cpu: "*"
+  server: '>=1.16.28'
+  os: '*'
+  cpu: '*'
 scripts:
-  dev: npm run start
+  dev: pnpm run start
+  preStart: node api/hooks/pre-start.js
 environments: []
-capabilities: {}
+capabilities:
+  navigation: true
 screenshots: []
 components: []
 navigation:
@@ -56,3 +60,5 @@ navigation:
       en: Profile page
       zh: Profile 页面
     link: /profile
+name: z2qaC8Bm3cLGRRH5riHXXb7acwLFjB23huNJW
+egress: true

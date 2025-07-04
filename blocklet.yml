@@ -1,5 +1,5 @@
-title: credit-service-demo
-description: A Blocklet DAPP blocklet
+title: Credit Service Demo
+description: A Blocklet DAPP for credit service demo
 keywords:
   - blocklet
   - react
@@ -11,9 +11,9 @@ author:
   email: fang_xiao-7.13@qq.com
 repository:
   type: git
-  url: git+https://github.com/blocklet/create-blocklet.git
+  url: git+https://github.com/blocklet/credit-usaged-demo.git
 specVersion: 1.2.8
-version: 1.0.0
+version: 1.0.1
 logo: logo.png
 files:
   - dist
@@ -47,18 +47,22 @@ scripts:
 environments: []
 capabilities:
   navigation: true
-screenshots: []
-components: []
+screenshots:
+  - screen_01.png
+  - screen_02.png
+components:
+  - name: payment-kit
+    mountPoint: /payment
+    source:
+      store: https://test.store.blocklet.dev
+      name: z2qaCNvKMv5GjouKdcDWexv6WqtHbpNPQDnAk
+      version: latest
+    required: true
 navigation:
   - id: home
     title:
       en: Home page
       zh: 首页
     link: /home
-  - id: profile
-    title:
-      en: Profile page
-      zh: Profile 页面
-    link: /profile
 name: z2qaC8Bm3cLGRRH5riHXXb7acwLFjB23huNJW
 egress: true

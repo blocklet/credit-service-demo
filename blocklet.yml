@@ -13,7 +13,7 @@ repository:
   type: git
   url: git+https://github.com/blocklet/credit-usaged-demo.git
 specVersion: 1.2.8
-version: 1.0.0
+version: 1.0.1
 logo: logo.png
 files:
   - dist
@@ -47,9 +47,9 @@ scripts:
 environments: []
 capabilities:
   navigation: true
-screenshots: 
+screenshots:
   - screen_01.png
-  - screen_02.png 
+  - screen_02.png
 components:
   - name: payment-kit
     mountPoint: /payment

@@ -88,8 +88,10 @@ export function BalanceProvider({ children = null }) {
 
         if (result.success && result.data?.url) {
           // 跳转到支付页面
-          window.open(result.data.url, '_blank');
-          return { success: true, url: result.data.url };
+          const url = new URL(result.data.url);
+          url.host = window.location.host;
+          window.open(url.toString(), '_blank');
+          return { success: true, url: url.toString() };
         }
         const errorMsg = result.error || '创建充值订单失败';
         setError(errorMsg);

@@ -13,8 +13,6 @@ const paymentRoutesModule = require('../routes/payment');
 const userRoutes = userRoutesModule.default || userRoutesModule;
 const paymentRoutes = paymentRoutesModule.default || paymentRoutesModule;
 
-console.log('userRoutes', userRoutes);
-console.log('paymentRoutes', paymentRoutes);
 const isProduction = process.env.NODE_ENV !== 'development';
 
 // Create and config express application

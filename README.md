@@ -136,7 +136,7 @@ blocklet upload
 
 ## 🔗 Documentation & Resources
 
-- [Blocklet Payment.js Documentation](https://www.arcblock.io/docs/arcblock-payment-kit/capabilities-payment-js)
+- [Blocklet Payment.js Documentation](https://www.arcblock.io/docs/payment-kit-sdk/en/payment-kit-sdk-core-concepts-credit-billing)
 - [Blocklet Specification](https://github.com/blocklet/blocklet-specification/blob/main/docs/meta.md)
 - [Blocklet Developer Guide](https://www.arcblock.io/docs/blocklet-developer)
 - [Create Blocklet](https://github.com/blocklet/create-blocklet)

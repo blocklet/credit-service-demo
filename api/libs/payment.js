@@ -76,7 +76,7 @@ export const ensureCreditPrice = async () => {
             currency_id: paymentCurrencies[0].id,
             currency_options: paymentCurrencies.map((currency) => ({
               currency_id: currency.id,
-              unit_amount: '0.1',
+              unit_amount: '0.01',
             })),
             lookup_key: VIDEO_WATCHING_PRICE_KEY,
             nickname: 'Per Unit Credit For Video Watching',

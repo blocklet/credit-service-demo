@@ -162,7 +162,7 @@ router.get('/credits/balance/:customerId', middlewares.session(), async (req, re
     // 当前Credit 余额
     let balance = new BN(creditBalance?.[meter.currency_id]?.remainingAmount || 0);
     // 未结算 Credit
-    const pending = new BN(pendingCredit?.[meter.currency_id]?.pendingAmount || 0);
+    const pending = new BN(pendingCredit?.[meter.currency_id] || 0);
     if (pending.gt(balance)) {
       balance = balance.sub(pending);
     }

@@ -57,7 +57,7 @@
     "vite-plugin-blocklet": "^0.9.33",
     "vite-plugin-require": "^1.2.14",
     "vite-plugin-svgr": "^4.3.0",
-    "zx": "^8.3.2",
+    "zx": "^8.8.5",
     "@trivago/prettier-plugin-sort-imports": "^5.2.0"
   },
   "lint-staged": {
